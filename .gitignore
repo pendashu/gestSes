@@ -1,0 +1,10 @@
+# Backend
+Backend-UFR-SES2/node_modules/
+Backend-UFR-SES2/.env
+
+# Frontend
+Plateforme-UFR-SES2/.vscode/
+
+# Système
+.DS_Store
+Thumbs.db
