@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Plateforme UFR SES</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header style="display:flex; align-items:center; gap:20px; padding:10px 20px; background:#0d47a1; color:white;">
+    <img src="images/logo-uasz.png" alt="UASZ" style="height:55px;">
+    <div style="flex:1;">
+      <h1 style="margin:0; font-size:1.5rem; font-weight:bold;">UFR SES — Plateforme de Gestion Administrative</h1>
+      <p style="margin:5px 0 0; opacity:0.9; font-size:0.9rem;">Université Assane Seck de Ziguinchor</p>
+      <p style="margin:5px 0 0; font-size:0.95rem;">Bienvenue, <span id="welcomeName">Chargement...</span></p>
+    </div>
+    <a href="index.html" style="color:white; text-decoration:none; background:#d32f2f; padding:8px 16px; border-radius:5px; font-weight:bold;">
+      🏠 Accueil
+    </a>
+    <a href="#" onclick="deconnecter()" style="color:white; text-decoration:none; background:#b71c1c; padding:8px 16px; border-radius:5px; font-weight:bold; margin-left:10px;">
+      🔐 Se déconnecter
+    </a>
+  </header>
+
+  <main style="max-width:1000px; margin:20px auto; padding:0 20px;">
+    <div class="grid-menu">
+      <a href="budget.html" class="card-link">💼 Budget</a>
+      <a href="per.html" class="card-link">📝 PER</a>
+      <a href="stocks.html" class="card-link">📦 Stocks</a>
+      <a href="carburant.html" class="card-link">⛽ Carburant</a>
+      <a href="passation.html" class="card-link">📋 Passation</a>
+      <a href="dashboard.html" class="card-link">📈 Dashboard</a>
+    </div>
+  </main>
+
+  <script>
+    // ✅ Fonction de déconnexion
+    function deconnecter() {
+      if (confirm("Voulez-vous vraiment vous déconnecter ?")) {
+        localStorage.removeItem("user");
+        window.location.href = "login.html";
+      }
+    }
+
+    // ✅ Chargement du nom
+    document.addEventListener("DOMContentLoaded", () => {
+      try {
+        const userStr = localStorage.getItem("user");
+        if (!userStr) return window.location.href = "login.html";
+
+        const user = JSON.parse(userStr);
+        document.getElementById("welcomeName").textContent = user.name || user.username || "Utilisateur";
+      } catch (e) {
+        console.error("Erreur chargement utilisateur :", e);
+        alert("⚠️ Session invalide.");
+        window.location.href = "login.html";
+      }
+    });
+  </script>
+</body>
+</html>

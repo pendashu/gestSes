@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test</title></head>
+<body>
+  <h1>Test de connexion</h1>
+  <p>Bienvenue, <span id="welcomeName">Chargement...</span></p>
+  <button onclick="showUser()">Voir utilisateur</button>
+
+  <script>
+    function showUser() {
+      try {
+        const user = JSON.parse(localStorage.getItem("user"));
+        document.getElementById("welcomeName").textContent = user?.name || "Inconnu";
+        alert("Utilisateur : " + JSON.stringify(user, null, 2));
+      } catch (e) {
+        alert("Erreur : " + e.message);
+      }
+    }
+  </script>
+</body>
+</html>

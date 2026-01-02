@@ -1,0 +1,452 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background: #0d47a1;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+header img {
+  height: 55px;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+header h1 {
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+header p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin: 5px 0 0;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  background: #d32f2f;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-left: 15px;
+  display: inline-block;
+}
+
+.login-form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 25px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  color: #0d47a1;
+  text-align: center;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25,118,210,0.15);
+}
+
+.login-form button {
+  background: #1976d2;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 15px;
+  transition: background 0.3s;
+}
+
+.login-form button:hover {
+  background: #0d47a1;
+}
+
+/* ✅ Formulaires (PER, Stocks, etc.) */
+.form-container {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 25px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.form-container h2 {
+  margin-top: 0;
+  color: #0d47a1;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25,118,210,0.15);
+}
+
+.form-container button {
+  background: #1976d2;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s;
+  width: 100%;
+  text-align: center;
+}
+
+.form-container button:hover {
+  background: #0d47a1;
+}
+
+/* ✅ Liste des PER */
+#listePER {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+}
+
+#listePER li {
+  background: #f5f5f5;
+  padding: 12px 15px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border-left: 4px solid #1976d2;
+  position: relative;
+}
+
+#listePER li strong {
+  font-weight: bold;
+  color: #0d47a1;
+}
+
+#listePER li span {
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+#listePER li span[style*="orange"] {
+  background: #ffcc80;
+  color: #e65100;
+}
+#listePER li span[style*="green"] {
+  background: #a5d6a7;
+  color: #2e7d32;
+}
+#listePER li span[style*="red"] {
+  background: #ef9a9a;
+  color: #c62828;
+}
+
+/* ✅ Bouton d'export CSV */
+button[onclick="exporterPER()"] {
+  background: #d32f2f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+}
+
+button[onclick="exporterPER()"]:hover {
+  background: #b71c1c;
+}
+
+/* ✅ Liste des stocks */
+#listeStocks {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+}
+
+#listeStocks li {
+  background: #f5f5f5;
+  padding: 12px 15px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border-left: 4px solid #1976d2;
+}
+
+#listeStocks li strong {
+  font-weight: bold;
+  color: #0d47a1;
+}
+
+#listeStocks li span {
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+#listeStocks li span[style*="red"] {
+  background: #ef9a9a;
+  color: #c62828;
+}
+#listeStocks li span[style*="green"] {
+  background: #a5d6a7;
+  color: #2e7d32;
+}
+
+/* ✅ Boutons Entrée/Sortie */
+#listeStocks button {
+  margin: 0 5px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+#listeStocks button:nth-child(1) {
+  background: #2e7d32;
+  color: white;
+}
+#listeStocks button:nth-child(2) {
+  background: #c62828;
+  color: white;
+}
+
+/* ✅ Message de redirection PER */
+#messagePer {
+  background: #e3f2fd;
+  padding: 15px;
+  margin: 15px auto;
+  max-width: 700px;
+  border-left: 4px solid #1976d2;
+  border-radius: 4px;
+}
+
+#messagePer button {
+  background: #d32f2f;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#messagePer button:hover {
+  background: #b71c1c;
+}
+
+/* ✅ PV de Sortie (formulaire) */
+.form-pv-sortie {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 25px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.form-pv-sortie h2 {
+  margin-top: 0;
+  color: #0d47a1;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-pv-sortie label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-pv-sortie input,
+.form-pv-sortie textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-pv-sortie input:focus,
+.form-pv-sortie textarea:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25,118,210,0.15);
+}
+
+.form-pv-sortie button {
+  background: #1976d2;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s;
+  width: 100%;
+  text-align: center;
+}
+
+.form-pv-sortie button:hover {
+  background: #0d47a1;
+}
+
+/* ✅ Grid Menu */
+.grid-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.card-link {
+  background: #3f51b5;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.card-link:hover {
+  background: #303f9f;
+  transform: translateY(-2px);
+}
+
+/* ✅ Dashboard */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.dashboard-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.dashboard-card h3 {
+  margin: 0 0 10px;
+  color: #0d47a1;
+  font-size: 1.1rem;
+}
+
+.dashboard-card .value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.dashboard-card .status {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.dashboard-card.status-normal {
+  color: green;
+}
+
+.dashboard-card.status-critical {
+  color: red;
+}
+
+/* ✅ Responsive */
+@media (max-width: 768px) {
+  .form-container,
+  .dashboard-grid,
+  .grid-menu {
+    padding: 10px;
+  }
+
+  .form-container h2,
+  .dashboard-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .form-container button {
+    padding: 10px 15px;
+    font-size: 1rem;
+  }
+}
